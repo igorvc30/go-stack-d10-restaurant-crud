@@ -54,10 +54,12 @@ const Dashboard: React.FC = () => {
     });
 
     const updatedFood = response.data;
-    setFoods(prevState => [
-      ...prevState.filter(food => food.id !== editingFood.id),
-      updatedFood,
-    ]);
+    setFoods(prevState =>
+      [
+        ...prevState.filter(food => food.id !== editingFood.id),
+        updatedFood,
+      ].sort((a, b) => a.id - b.id),
+    );
     setEditModalOpen(false);
   }
 
